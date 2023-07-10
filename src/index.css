@@ -130,4 +130,15 @@ body {
   cursor: pointer;
   font-size: 48px;
 }
+.puntaje{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.turno.puntaje{
+  border: 2px solid #eee;
+  border-radius: 5px;
+}
