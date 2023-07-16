@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './index.css'
 import { Cuadrado } from './Component/Cuadrado.jsx'
-import { TURNO, RESULTADO, COMBINACIONES_GANADORAS } from './constants'
-import { analizarResultado, finalDeJuego } from './logic/estadoTablero'
+import { TURNO, RESULTADO} from './constants'
+import { analizarResultado, finalDeJuego, turnoMaquina } from './logic/estadoTablero'
 import confetti from 'canvas-confetti'
 import { GanadorModal } from './Component/GanadorModal.jsx'
 
@@ -11,11 +11,13 @@ function App() {
   const [turno, setTurno] = useState(TURNO.X)
   const [resultado, setResultado] = useState(RESULTADO.enJuego)
   const [puntaje, setPuntaje] = useState({ X: 0, O: 0 })
+  const [jugador, setJugador] = useState(TURNO.X)
+
   const actualizaTablero = (index) => {
     //si ya hay X u O no hace nada
     if (tablero[index] || resultado !== RESULTADO.enJuego) return
     //actualiza el estado del tablero
-    const nuevoTablero = [...tablero]
+   var nuevoTablero = [...tablero]
     nuevoTablero[index] = turno
     setTablero(nuevoTablero)
     //actualiza a quien le toca
@@ -31,8 +33,19 @@ function App() {
       setPuntaje(nuevoPuntaje)
     } else if (finalDeJuego(nuevoTablero)) {
       setResultado(RESULTADO.empate) // empate
-    }
+    } 
+   
   }
+
+  if (turno != jugador) {
+    setTimeout(() => { 
+   let indice = turnoMaquina(tablero, TURNO.O, TURNO.X)
+      actualizaTablero(indice)
+}, 80);   
+      
+     
+    }
+  
   //regresa al estado inicial
   const reiniciarJuego = () => {
     setTablero(Array(9).fill(null))
@@ -68,10 +81,10 @@ function App() {
         <section className='turno'>
           <Cuadrado seleccionado={turno === TURNO.X} texto={TURNO.X}>
 
-          </Cuadrado>
+                </Cuadrado>
           <Cuadrado seleccionado={turno === TURNO.O} texto={TURNO.O}>
 
-          </Cuadrado>
+              </Cuadrado>
         </section>
         {resultado !== RESULTADO.enJuego && (
           <section>
