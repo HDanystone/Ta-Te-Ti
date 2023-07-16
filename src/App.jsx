@@ -31,7 +31,7 @@ function App() {
       const nuevoPuntaje = { ...puntaje }
       nuevoPuntaje[nuevoGanador] += 1
       setPuntaje(nuevoPuntaje)
-    } else if (finalDeJuego(nuevoTablero)) {
+     } else if (finalDeJuego(nuevoTablero)) {
       setResultado(RESULTADO.empate) // empate
     } 
    
