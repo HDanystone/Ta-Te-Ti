@@ -1,14 +1,16 @@
-import "../App.css";
+import '../App.css'
+import { TURNO } from '../modulos/constantes'
 
-export function Turno({ turno } ) {
-
-
+export function Turno({ turno }) {
     return (
         <div className='contenedorTurno'>
-            <label className='textoTurno'>Turno actual: </label>
-            <div className='turnoClip'> 
-                <label id='lblTurno' className={`turno ${turno}`}>X O</label>
-            </div> 
+            <label id='lblTurno' className={`turno ${turno === TURNO.x ? 'X' : null}`}>
+                X
+            </label>
+            <label className='textoTurno'>Turno actual</label>
+            <label id='lblTurno' className={`turno ${turno === TURNO.o ? 'O' : null}`}>
+                O
+            </label>
         </div>
     )
 }

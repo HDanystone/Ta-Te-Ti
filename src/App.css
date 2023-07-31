@@ -1,190 +1,188 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Mansalva&family=Source+Code+Pro:wght@400;500;600&display=swap');
+
 #root {
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  --bgcolor: rgb(221, 228, 228);
-  --bgcolor3: rgb(53, 54, 54);
-  --bgcolor2: rgba(232, 235, 235, 0.4);
-  --color-primario: #aacad5;
-  --color-secundario: #729dd6;
-  --color-terciario: #53749f;
-  --colorX: #93d9a9;
-  --sombraX: #1d4622;
-  --colorO: #dadc7e;
-  --sombraO: #70721b;
-  --sombra: 4px 4px 4px 2px gray;
-  --fuente-primaria: 24px 'Source Code Pro';
-  --fuente-secundaria: 38px 'Source Code Pro';
-  --fuente-form: 18px 'Source Code Pro';
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    --bgcolor: rgb(42, 41, 41);
+    --bgcolor2: rgba(232, 235, 235, 0.4);
+    --color-primario: #c8f0fd;
+    --color-secundario: rgb(136, 186, 251);
+    --color-terciario: #5c82b3;
+    --colorX: #96e8b0;
+    --sombraX: 1px 1px 15px #66ac6e, -1px -1px 15px #66ac6e;
+    --colorO: #e5e680;
+    --sombraO: 1px 1px 15px #adaf49, -1px -1px 15px #adaf49;
+    --sombra-pantalla: 1px 1px 8px rgb(136, 186, 251), -1px -1px 8px rgb(136, 186, 251);
+    --sombra-pantalla-in: inset 1px 1px 8px rgb(136, 186, 251),
+        inset -1px -1px 10px rgb(136, 186, 251);
+    --sombra: 4px 4px 4px 2px gray;
+    --fuente-primaria: 24px 'Source Code Pro';
+    --fuente-secundaria: 38px 'Source Code Pro';
+    --fuente-form: 18px 'Source Code Pro';
+    --fuente-X-O: 'Mansalva', 'Lucida Sans';
 }
-body{
+
+body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+fieldset {
+    all: unset;
 }
-fieldset{
-  all:unset;
-}
+
 input {
-  margin: 0px 0px 4px;
-  padding: 0;
+    margin: 0px 0px 4px;
+    padding: 0;
 }
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  font: var(--fuente-primaria);
-  margin: 10px 0px;
 
+.app {
+    font: var(--fuente-primaria);
+    margin: 10px 0px;
 }
 
 .tablero {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  justify-content: center;
-  justify-items: center;
-  align-content: center;
-  background-color: var(--bgcolor);
-  box-shadow: var(--sombra);
-  border-radius: 4px;
-  margin: 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    background-color: var(--bgcolor);
+    box-shadow: var(--sombra);
+    border-radius: 4px;
+    padding: 10px 10px;
 }
-
 
 .pantalla {
- 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 10px 0px;
-  box-shadow: var(--sombra);
-  border-radius: 4px;
-  color: var(--color-terciario);
-  background-color: var(--bgcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin: 10px 0px;
+    box-shadow: var(--sombra);
+    border-radius: 4px;
+    color: var(--color-terciario);
+    background-color: var(--bgcolor);
 }
 
-.textoPantalla {
-  padding: 0px 20px;
-
+.textoJugador.X {
+    font: 44px var(--fuente-X-O);
+    color: var(--colorX);
+    text-shadow: var(--sombraX);
 }
 
-.textoJugador {
-  font: var(--fuente-secundaria);
-
+.textoJugador.O {
+    font: 44px var(--fuente-X-O);
+    color: var(--colorO);
+    text-shadow: var(--sombraO);
 }
 
 .contenedorPuntaje {
-  width: 46px;
-  height: 30px;
-  position: relative;
-  padding: 6px 6px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font: var(--fuente-primaria);
-  background-color: var(--bgcolor3);
-  border-radius: 4px;
-
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    width: 110px;
 }
 
-
 .puntaje {
-  position: relative;
-  color: var(--color-secundario);
-  font: var(--fuente-secundaria);
-  transition: opacity 2s;
-  transition: color, 2s ,ease-in , 1s;
+    position: relative;
+    color: var(--color-secundario);
+    font: var(--fuente-secundaria);
+    text-shadow: var(--sombra-pantalla);
+    transition: opacity 2s;
+    transition: color, 2s, ease-in, 1s;
 }
 
 .celda {
-  width: 120px;
-  height: 120px;
-  border: 4px solid var(--color-primario);
-  border-radius: 6px;
- transition: color, 2s , ease-in , 300ms;
-color: var(--bgcolor);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Mansalva', 'Lucida Sans';
-  font-size: 90px;
-  cursor: pointer;
-  user-select: none;
+    width: 100px;
+    height: 100px;
+    border: 4px solid var(--color-primario);
+    box-shadow: var(--sombra-pantalla), var(--sombra-pantalla-in);
+    border-radius: 6px;
+    transition: color, 2s, ease-in, 300ms;
+    color: var(--bgcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Mansalva', 'Lucida Sans';
+    font-size: 80px;
+    cursor: pointer;
+    user-select: none;
 }
-.celda.X{
- color: var(--colorX);
-  text-shadow: 2px 2px 15px var(--sombraX), -2px -2px 15px var(--sombraX);
+
+.celda.X {
+    color: var(--colorX);
+    text-shadow: var(--sombraX);
 }
-.celda.O{
-   color: var(--colorO);
-  text-shadow: 2px 2px 15px var(--sombraO), -2px -2px 15px var(--sombraO);
+
+.celda.O {
+    color: var(--colorO);
+    text-shadow: var(--sombraO);
 }
 
 .contenedorTurno {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 10px 0px;
-  box-shadow: var(--sombra);
-  border-radius: 4px;
-  color: var(--color-terciario);
-  background-color: var(--bgcolor);
-}
-.turno{
-   font: var(--fuente-secundaria);
-    color: var(--color-secundario);
- 
-}
-.turno.O{ 
- transform: translateY(-25px);
-  transition: transform, 1.5s ,ease-out , 200ms;
-}
-.turno.X{
-   transform: translateY(22px);
-  transition: transform, 1.5s ,ease-out , 200ms;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    margin: 10px 0px;
+    box-shadow: var(--sombra);
+    border-radius: 4px;
+    color: var(--color-terciario);
+    background-color: var(--bgcolor);
 }
 
-.turnoClip {
-  display: flex;
-  height: 42px;
-  padding: 0px 6px;
-  width: 24px;
-  overflow: clip;
-  background-color: var(--bgcolor3);
-  border-radius: 4px;
-  align-items: center;
-  justify-content: flex-start;
-
+.turno {
+    font: 44px var(--fuente-X-O);
+    opacity: 0;
+    color: var(--bgcolor);
 }
-.form{ 
-width: max-content;
+
+.turno.O {
+    color: var(--colorO);
+    text-shadow: var(--sombraO);
+    opacity: 1;
+    transition: opacity 2s ease;
+}
+
+.turno.X {
+    color: var(--colorX);
+    text-shadow: var(--sombraX);
+    opacity: 1;
+    transition: opacity 2s ease;
+}
+
+.form {
+    width: max-content;
     height: max-content;
     display: flex;
-    padding: 25px 25px;
-    background-color: var(--bgcolor);
-    border-color: var(--color-secundario);
-    box-shadow: var(--sombra);
+    padding: 20px 30px 30px;
     color: var(--color-terciario);
     flex-direction: column;
     align-items: center;
     font: var(--fuente-form);
     border-radius: 6px;
+    border-style: solid;
+    border: 4px solid var(--color-primario);
+    box-shadow: var(--sombra-pantalla), var(--sombra-pantalla-in);
 }
-.optionF{
-width: 190px;
 
+.form.fin {
+    padding: 20px 25px 30px;
+}
+
+.optionF {
+    width: 190px;
     margin-bottom: 15px;
     padding: 6px 30px 20px;
     display: flex;
@@ -196,98 +194,77 @@ width: 190px;
     justify-content: flex-start;
 }
 
-
 .optionF.A {
-display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.contieneNombres{
-  display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.nombres{
-   display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 50px;
-}
-::placeholder{
-  color: var(--bgcolor);
-}
-.inputNombre{
-height: 20px;
-    color: white;
+.boton {
     background-color: var(--color-secundario);
-    border: 1px solid transparent;
-    border-radius: 4px;
-    padding: 4px 6px;
-    font: var(--fuente-form);
-}
-.inputNombre:disabled{
-  background-color: var(--color-primario);
-
-}
-.boton{
- background-color: var(--color-secundario);
     color: white;
     border: 2px solid transparent;
     border-radius: 4px;
     padding: 4px 8px;
     font: var(--fuente-form);
     cursor: pointer;
-    margin-top: 10px;
+    margin: 20px 15px 5px;
 }
-.boton:hover{
-  border: 2px solid var(--color-terciario)
+
+.boton:hover {
+    border: 2px solid var(--color-terciario);
 }
-.lbl{
-  margin: 2px 10px 6px;
-  padding: 0px 4px;
+
+.lbl {
+    margin: 2px 10px 6px;
+    padding: 0px 4px;
 }
-.lbl.ganador{
-FONT-WEIGHT: 600;
+
+.lbl.ganador {
+    font-weight: 600;
     margin: 0;
     padding: 0;
     font-size: 42px;
 }
-.lbl.Ficha{
-font: 70px Mansalva;
- margin: 0px 0px;
- 
+
+.lbl.Ficha {
+    font: 70px Mansalva;
+    margin: 0px 0px;
 }
-.lbl.Ficha.X{
-  color: var(--colorX);
-  text-shadow: 2px 2px 15px var(--sombraX), -2px -2px 15px var(--sombraX);
+
+.lbl.Ficha.X {
+    color: var(--colorX);
+    text-shadow: var(--sombraX);
 }
-.lbl.Ficha.O{
-  color: var(--colorO);
-   text-shadow: 2px 2px 15px var(--sombraO), -2px -2px 15px var(--sombraO);
+
+.lbl.Ficha.O {
+    color: var(--colorO);
+    text-shadow: var(--sombraO);
 }
-.divs{
-  display: flex;
+
+.divs {
+    display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
 }
-.modal.visible{
-  position: fixed;
+
+.modal.visible {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(10 18 18 / 85%);
+    background-color: rgb(0 0 0 / 95%);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 99;
-    backdrop-filter:blur(8px);
+    transition: opacity 200ms ease-in;
+    opacity: 1;
 }
-.modal{
-  display: none;
+
+.modal {
+    opacity: 0;
 }

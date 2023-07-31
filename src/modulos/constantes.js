@@ -22,9 +22,7 @@ export const ESTADO ={
 }
   
 export const JUGADORES = {
-    jugador1:'',
     jugador2:'',
-    ia: '',
     ficha: ''
 }
 export const PUNTAJE = {
