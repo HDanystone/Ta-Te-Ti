@@ -1,7 +1,7 @@
 import '../App.css'
 import { useState } from 'react'
 import { JUGADORES } from '../modulos/constantes'
-var placeholderIA = ''
+
 export function InicioJuego({ inicializarValores }) {
     const [datosUsuario, setDatosUsuario] = useState(JUGADORES)
 

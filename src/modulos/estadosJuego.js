@@ -23,7 +23,7 @@ export function muestraModal() {
     setTimeout(() => {
         let modal = document.getElementById('modal')
         modal.classList.toggle('visible')
-    }, 1)
+    }, 200)
 }
 
 export function actualizaPuntaje(puntaje, turno) {
